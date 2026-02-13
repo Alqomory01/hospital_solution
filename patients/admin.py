@@ -8,6 +8,14 @@ class PatientAdmin(admin.ModelAdmin):
     readonly_fields = ['medical_history']
     list_filter = ['patient_id']
 
-admin.site.register(Patient, PatientAdmin)
+class PatientNoteAdmin(admin.ModelAdmin):
+    list_display = ("patient","doctor","note", "created_at", "updated_at", "version")
+    search_fields = ("patient", "note")
+    list_filter = ['patient']
+    readonly_fields =['created_at']
+    ordering =("-created_at",)
 
+
+admin.site.register(Patient, PatientAdmin)
+admin.site.register(PatientNote, PatientNoteAdmin)
 # Register your models here.

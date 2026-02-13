@@ -1,0 +1,11 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block branding %}
+  <div class="flex items-center space-x-2">
+    <img src="{% static 'images/hospital_logo.png' %}" alt="Hospital Logo" class="h-8 w-8"/>
+    <span class="font-bold text-lg">Hospital EMR</span>
+  </div>
+{% endblock %}
+
+<!-- {% block title %}Hospital Management System{% endblock %} -->

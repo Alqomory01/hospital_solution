@@ -1,0 +1,14 @@
+{% extends "admin/login.html" %}
+{% load static %}
+
+{% block branding %}
+  <div class="flex flex-col items-center">
+    <img src="{% static 'images/hospital_logo.png' %}" alt="Hospital Logo" class="h-16 w-16 mb-4"/>
+    <h1 class="text-xl font-bold">Welcome to AlqomoryTech EMR</h1>
+    <p class="text-gray-600">Secure access to hospital records</p>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  <p class="text-center text-gray-500 mt-4">© 2026 AlqomoryTech Hospital Solutions</p>
+{% endblock %}

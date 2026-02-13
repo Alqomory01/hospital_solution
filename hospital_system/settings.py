@@ -47,19 +47,26 @@ INSTALLED_APPS = [
     'reports',
     'doctors'
 ]
-UNFOLD = {
-    "SITE": {
-        "TITLE": "Hospital EMR Admin",
-        "HEADER": "Hospital Management System",
-        "LOGO": "/static/images/hospital_logo.png",  # make sure logo is inside static/images/
-    },
-    "THEME": {
-        "primary_color": "blue",
-        "secondary_color": "white",
-        "background_color": "black",   
-        "text_color": "gray-800",         # Tailwind text
-    },
-}
+# UNFOLD = {
+#     "SITE": {
+#         "TITLE": "Hospital EMR Admin",
+#         "HEADER": "Hospital Management System",
+#         "LOGO": "images/hospital_logo.png",  # make sure logo is inside static/images/
+#     },
+#     "THEME": {
+#         "primary_color": "blue",
+#         "secondary_color": "white",
+#         "background_color": "black",   
+#         "text_color": "gray-800",         
+#     },
+#       "LOGIN": { 
+#         "LOGO": "images/hospital_logo.png",
+#         "TITLE": "Welcome to AlqomoryTech EMR", 
+#         "SUBTITLE": "Secure access to hospital records", 
+#         "FOOTER": "© 2026 AlqomoryTech Hospital Solutions",
+# },
+#     }
+  
 
 
 MIDDLEWARE = [
@@ -77,10 +84,11 @@ ROOT_URLCONF = 'hospital_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                "django.template.context_processors.debug",
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -137,12 +145,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_URL = 'static/'
+
+STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    "static",
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = '/media/'
