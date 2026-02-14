@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'patients',
     'pharmacy',
     'reports',
-    'doctors'
+    'doctors',
+    'cds',
+    'theme'
 ]
 # UNFOLD = {
 #     "SITE": {

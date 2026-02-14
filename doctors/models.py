@@ -1,6 +1,7 @@
 # doctors/models.py
 from django.db import models
 from django.conf import settings  # to link with your CustomUser
+from django.core.exceptions import ValidationError
 
 class Doctor(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -12,6 +13,13 @@ class Doctor(models.Model):
 
     def __str__(self):
         return f"Dr. {self.user.first_name} {self.user.last_name} ({self.specialization})"
+    
+class Encounter(models.Model): 
+    doctor = models.ForeignKey("doctors.Doctor", on_delete=models.CASCADE) 
+    patient = models.ForeignKey("patients.Patient", on_delete=models.CASCADE) 
+    notes = models.TextField() 
+    def clean(self): 
+        if self.patient.age > 50: raise ValidationError(f"Prompt: Consider colon cancer screening for {self.patient.name}.")
 
 
 # Create your models here.

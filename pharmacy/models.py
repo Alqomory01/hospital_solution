@@ -1,6 +1,7 @@
 from django.db import models
 from patients.models import Patient
 from doctors.models import Doctor
+from cds.rules import check_allergy, check_duplicate_prescriptions
 
 class Medication(models.Model):
     name = models.CharField(max_length=100)  # e.g., "Amoxicillin"
@@ -20,6 +21,11 @@ class Prescription(models.Model):
     date_prescribed = models.DateTimeField(auto_now_add=True)
     notes = models.TextField(blank=True, null=True)
 
+    def clean(self): 
+        check_allergy(self.patient, self.drug_name) 
+        check_duplicate_prescriptions(self.patient, self.drug_name)
+
+
     def __str__(self):
         return f"Prescription for {self.patient} by {self.doctor}"
 
@@ -29,6 +35,8 @@ class PrescriptionItem(models.Model):
     medication = models.ForeignKey(Medication, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     instructions = models.TextField()  # e.g., "Take 1 tablet twice daily"
+
+   
 
     def __str__(self):
         return f"{self.medication.name} x {self.quantity}"

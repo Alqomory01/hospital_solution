@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Dashboard</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body style="background-color: black; color:white;" class="bg-black text-gray-800">
+    <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold mb-6" style="text-align: center;">Hospital Management Dashboard</h1>
+        <div class="grid grid-cols-3 gap-6" style="display: grid; grid-template-columns: repeat(3, 1fr); width:960px; margin: 10px auto; column-gap: 10px;row-gap: 20px;text-decoration: none;">
+            <a href="/admin/patients/patient/" style="color:white;background-color: rgb(78, 54, 58);padding: 30px 20px;text-align: center;font-size: 22px;text-decoration: none;border-radius: 10px; "class="p-6 text-blue-700 bg-white shadow rounded text-center hover:bg-blue-50">Patients</a>
+            <a href="/admin/doctors/doctor/" style="color:white;background-color: rgb(1, 1, 106);padding: 30px 20px;text-align: center;font-size: 22px;text-decoration: none;border-radius: 10px; " class="p-6 bg-white shadow rounded text-center hover:bg-blue-50">Doctors</a>
+            <a href="/admin/billing/invoice/" style="color:white;background-color: rgb(127, 127, 7);padding: 30px 20px;text-align: center;font-size: 22px;text-decoration: none;border-radius: 10px; " class="p-6 bg-white shadow rounded text-center hover:bg-blue-50">Billing</a>
+            <a href="/admin/laboratory/labrequest/" style="color:white;background-color: rgb(138, 2, 2);padding: 30px 20px;text-align: center;font-size: 22px;text-decoration: none;border-radius: 10px; " class="p-6 bg-white shadow rounded text-center hover:bg-blue-50">Lab Requests</a>
+            <a href="/admin/pharmacy/" style="color:white;background-color: rgb(3, 94, 33);padding: 30px 20px;text-align: center; font-size: 22px;text-decoration: none;border-radius: 10px; " class="p-6 bg-white shadow rounded text-center hover:bg-blue-50">Pharmacy</a>
+            <a href="/admin/appointments/appointment/" style="color:white;background-color: rgb(97, 2, 100);padding: 30px 20px;text-align: center;border-radius: 10px;font-size: 22px;text-decoration: none; " class="p-6 bg-white shadow rounded text-center hover:bg-blue-50">Appointments</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 from django.db import models
 from patients.models import Patient
 from doctors.models import Doctor
+from django.core.exceptions import ValidationError
 
 class LabTest(models.Model):
     name = models.CharField(max_length=100)  # e.g., "Blood Sugar", "X-Ray"
@@ -34,6 +35,9 @@ class LabResult(models.Model):
     date_completed = models.DateTimeField(auto_now_add=True)
     verified_by = models.ForeignKey(Doctor, on_delete=models.SET_NULL, null=True, blank=True, related_name='verified_results')
 
+    def clean(self): 
+        if self.test_name == "Blood Sugar" and self.value > 200:
+            raise ValidationError(f"Critical Alert: {self.patient.name} has high blood sugar ({self.value}).")
     def __str__(self):
         return f"Result for {self.request.test.name} ({self.request.patient})"
 

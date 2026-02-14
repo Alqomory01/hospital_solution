@@ -1,0 +1,13 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<h1>Hospital Dashboard</h1>
+<ul>
+    <li>Total Patients: {{ patient_count }}</li>
+    <li>Total Billing: {{ invoice_total }}</li>
+    <li>Pending Lab Requests: {{ lab_pending }}</li>
+</ul>
+
+<!-- You can still include the default app list if you want -->
+{{ block.super }}
+{% endblock %}

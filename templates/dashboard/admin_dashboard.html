@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="p-10 bg-gray-100 text-gray-800">
+    <h1 class="text-2xl font-bold mb-6">Hospital Dashboard</h1>
+    <div class="mb-6">
+        <p>Total Patients: {{ patient_count }}</p>
+        <p>Total Billing: ₦{{ invoice_total }}</p>
+        <p>Pending Lab Requests: {{ lab_pending }}</p>
+    </div>
+
+    <canvas id="statsChart" width="400" height="200"></canvas>
+    <script>
+    const ctx = document.getElementById('statsChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Patients', 'Billing', 'Lab Pending'],
+            datasets: [{
+                label: 'Hospital Stats',
+                 data: [
+                    [patient_count],
+                     [invoice_total],
+                    [lab_pending ]
+            ],
+                backgroundColor: ['blue', 'green', 'orange']
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>
